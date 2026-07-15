@@ -10,13 +10,23 @@
   .eval-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   @media(max-width:820px){.eval-grid{grid-template-columns:1fr}}
   .eval-fig{margin:0}
-  .eval-card{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#0e2036;transition:.22s}
+  .eval-card{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#0e2036;transition:.22s;cursor:zoom-in}
   .eval-card:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(16,27,45,.14)}
-  .eval-card img{display:block;width:100%;height:auto}
+  .eval-card img{display:block;width:100%;height:auto;transition:transform .2s ease}
   .eval-ph{min-height:230px;display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff;background:linear-gradient(135deg,#12263d,#1b6b52);font-family:'Source Serif 4',Georgia,serif;text-align:center;padding:20px}
   .eval-ph .big{font-size:2.6rem;font-weight:700;line-height:1}
   .eval-cap{margin-top:12px;font-size:.92rem;color:var(--muted)}
   .eval-cap strong{color:var(--ink)}
+
+  /* click-to-enlarge: image pops to a centred zoom, reverts on mouse-out */
+  .eval-backdrop{position:fixed;inset:0;background:rgba(9,16,28,.72);z-index:150;opacity:0;pointer-events:none;transition:opacity .25s}
+  .eval-backdrop.show{opacity:1;pointer-events:auto}
+  .eval-card img.eval-zoom{
+    position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:auto;max-width:94vw;max-height:92vh;height:auto;
+    border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.55);
+    z-index:200;cursor:zoom-out;
+  }
 </style>
 </head>
 <body>
@@ -61,23 +71,23 @@
     <div class="sec-head reveal">
       <span class="sec-eyebrow">Teaching Quality</span>
       <h2>Student Class Evaluations</h2>
-      <p>Official student–faculty evaluation results across two consecutive semesters at the Higher Colleges of Technology — consistently rated well above expectations. Click a report to view it full-size.</p>
+      <p>Official student–faculty evaluation results across two consecutive semesters at the Higher Colleges of Technology — consistently rated well above expectations. <strong>Click a report to enlarge it; move your mouse away to shrink it back.</strong></p>
     </div>
 
     <div class="eval-grid reveal">
       <div class="eval-fig">
-        <a class="eval-card" href="assets/eval-fall-2025.png" target="_blank" rel="noopener">
+        <div class="eval-card">
           <img src="assets/eval-fall-2025.png" alt="Fall 2025 Student Faculty Evaluation Results — weighted average 4.56 out of 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="eval-ph"><span class="big">4.56 / 5</span><span>Fall 2025 — add image</span></div>
-        </a>
+        </div>
         <div class="eval-cap">Fall 2025 · Weighted average <strong>4.56 / 5</strong> — 99 student respondents across 4 courses (99/100 response rate).</div>
       </div>
 
       <div class="eval-fig">
-        <a class="eval-card" href="assets/eval-spring-2026.png" target="_blank" rel="noopener">
+        <div class="eval-card">
           <img src="assets/eval-spring-2026.png" alt="Spring 2026 Student Faculty Evaluation Results — weighted average 4.25 out of 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="eval-ph"><span class="big">4.25 / 5</span><span>Spring 2026 — add image</span></div>
-        </a>
+        </div>
         <div class="eval-cap">Spring 2026 · Weighted average <strong>4.25 / 5</strong> — 96 student respondents across 3 courses (96/98 response rate).</div>
       </div>
     </div>
@@ -152,7 +162,34 @@
   </div>
 </section>
 
+<!-- zoom backdrop -->
+<div class="eval-backdrop" id="evalBackdrop"></div>
+
 <div id="site-footer"></div>
 <script src="assets/main.js"></script>
+<script>
+  (function () {
+    var bd = document.getElementById('evalBackdrop');
+    var imgs = document.querySelectorAll('.eval-card img');
+    function closeAll() {
+      document.querySelectorAll('.eval-card img.eval-zoom').forEach(function (i) { i.classList.remove('eval-zoom'); });
+      if (bd) bd.classList.remove('show');
+    }
+    imgs.forEach(function (img) {
+      img.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = img.classList.contains('eval-zoom');
+        closeAll();
+        if (!isOpen) { img.classList.add('eval-zoom'); if (bd) bd.classList.add('show'); }
+      });
+      // move the mouse off the enlarged image → it returns to its position
+      img.addEventListener('mouseleave', function () {
+        if (img.classList.contains('eval-zoom')) closeAll();
+      });
+    });
+    if (bd) bd.addEventListener('click', closeAll);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+  })();
+</script>
 </body>
 </html>
