@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Dr. Mohamad Izani</title>
-<meta name="description" content="Essays and insights on generative AI, digital heritage, immersive media and teaching by Dr. Mohamad Izani.">
+<meta name="description" content="Essays on generative AI, digital heritage and teaching, alongside visited countries and a travel gallery — Dr. Mohamad Izani.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -22,280 +22,183 @@
 <section>
   <div class="wrap">
 
-    <div class="note reveal" style="margin-bottom:30px">
-      <strong>Starter posts.</strong> Three articles are included to get you going — edit them freely, or add a new post by copying one of the <code>blog-*.html</code> files and adding a card below.
+    <!-- Tab buttons — reuses the site's existing .pub-filter behaviour from assets/main.js,
+         so no extra script is needed: clicking a button shows the matching [data-cat] block
+         below and hides the other two. -->
+    <div class="pub-filter reveal">
+      <button data-filter="blog" class="active">Blog</button>
+      <button data-filter="countries">Visited Countries</button>
+      <button data-filter="gallery">Gallery</button>
     </div>
 
-    <div class="blog-grid">
+    <!-- ============ BLOG (shown by default) ============ -->
+    <div data-cat="blog">
 
-      <article class="post-card reveal">
-        <a href="blog-genai-education.html" class="post-thumb" style="background:linear-gradient(135deg,#1b3a5c,#3b6ea5)">Teaching in the Age of Generative AI</a>
-        <div class="post-body">
-          <span class="cat">Education &amp; AI</span>
-          <h3><a href="blog-genai-education.html">Teaching in the Age of Generative AI: Lessons from Training 5,000 Professionals</a></h3>
-          <p>What five thousand educators, executives and creatives have taught me about adopting AI well — and the support gaps that still hold people back.</p>
-          <div class="foot"><span>Jul 2026 · 6 min read</span><span class="read">Read →</span></div>
-        </div>
-      </article>
+      <div class="note reveal" style="margin-bottom:30px">
+        <strong>Starter posts.</strong> Three articles are included to get you going — edit them freely, or add a new post by copying one of the <code>blog-*.html</code> files and adding a card below.
+      </div>
 
-      <article class="post-card reveal">
-        <a href="blog-digital-heritage.html" class="post-thumb" style="background:linear-gradient(135deg,#6b4a1e,#c29a4a)">Preserving Heritage in Pixels</a>
-        <div class="post-body">
-          <span class="cat">Digital Heritage</span>
-          <h3><a href="blog-digital-heritage.html">Preserving Heritage in Pixels: Reconstructing the A Famosa Fortress</a></h3>
-          <p>How fragments of text and image become a defensible 3D reconstruction — and why digital heritage is as much about evidence and ethics as it is about rendering.</p>
-          <div class="foot"><span>Jun 2026 · 7 min read</span><span class="read">Read →</span></div>
-        </div>
-      </article>
+      <div class="blog-grid">
 
-      <article class="post-card reveal">
-        <a href="blog-2d-to-3d-ai.html" class="post-thumb" style="background:linear-gradient(135deg,#12495a,#2f8f96)">From 2D to 3D</a>
-        <div class="post-body">
-          <span class="cat">AI &amp; Animation</span>
-          <h3><a href="blog-2d-to-3d-ai.html">From 2D to 3D: Building an AI-Augmented Animation Pipeline</a></h3>
-          <p>A practical look at where generative AI genuinely helps a high-fidelity animation workflow — and where the artist still has to lead.</p>
-          <div class="foot"><span>May 2026 · 6 min read</span><span class="read">Read →</span></div>
-        </div>
-      </article>
+        <article class="post-card reveal">
+          <a href="blog-genai-education.html" class="post-thumb" style="background:linear-gradient(135deg,#1b3a5c,#3b6ea5)">Teaching in the Age of Generative AI</a>
+          <div class="post-body">
+            <span class="cat">Education &amp; AI</span>
+            <h3><a href="blog-genai-education.html">Teaching in the Age of Generative AI: Lessons from Training 5,000 Professionals</a></h3>
+            <p>What five thousand educators, executives and creatives have taught me about adopting AI well — and the support gaps that still hold people back.</p>
+            <div class="foot"><span>Jul 2026 · 6 min read</span><span class="read">Read →</span></div>
+          </div>
+        </article>
 
+        <article class="post-card reveal">
+          <a href="blog-digital-heritage.html" class="post-thumb" style="background:linear-gradient(135deg,#6b4a1e,#c29a4a)">Preserving Heritage in Pixels</a>
+          <div class="post-body">
+            <span class="cat">Digital Heritage</span>
+            <h3><a href="blog-digital-heritage.html">Preserving Heritage in Pixels: Reconstructing the A Famosa Fortress</a></h3>
+            <p>How fragments of text and image become a defensible 3D reconstruction — and why digital heritage is as much about evidence and ethics as it is about rendering.</p>
+            <div class="foot"><span>Jun 2026 · 7 min read</span><span class="read">Read →</span></div>
+          </div>
+        </article>
+
+        <article class="post-card reveal">
+          <a href="blog-2d-to-3d-ai.html" class="post-thumb" style="background:linear-gradient(135deg,#12495a,#2f8f96)">From 2D to 3D</a>
+          <div class="post-body">
+            <span class="cat">AI &amp; Animation</span>
+            <h3><a href="blog-2d-to-3d-ai.html">From 2D to 3D: Building an AI-Augmented Animation Pipeline</a></h3>
+            <p>A practical look at where generative AI genuinely helps a high-fidelity animation workflow — and where the artist still has to lead.</p>
+            <div class="foot"><span>May 2026 · 6 min read</span><span class="read">Read →</span></div>
+          </div>
+        </article>
+
+      </div>
     </div>
+
+    <!-- ============ VISITED COUNTRIES ============ -->
+    <div data-cat="countries" class="hidden">
+
+      <p class="reveal" style="max-width:70ch;margin-bottom:26px">I consider myself incredibly fortunate to have endless opportunities to immerse myself in the lives and cultures of others, to experience the joy of living and forge connections with people from all corners of the globe. As I continue to travel and explore, the list of places I've visited grows, and there are still countless more to be discovered.</p>
+
+      <div class="stat-row reveal" style="margin-bottom:34px">
+        <div class="stat"><span class="num">37</span><span class="lbl">Countries Visited</span></div>
+        <div class="stat"><span class="num">5</span><span class="lbl">Continents</span></div>
+        <div class="stat"><span class="num">&infin;</span><span class="lbl">Still To Explore</span></div>
+      </div>
+
+      <div class="group-head reveal"><h3>Asia &amp; Middle East</h3><span class="count">23</span></div>
+      <div class="tags reveal" style="margin-bottom:10px">
+        <span class="tag">🇸🇦 Saudi Arabia</span>
+        <span class="tag">🇯🇵 Japan</span>
+        <span class="tag">🇾🇪 Yemen</span>
+        <span class="tag">🇮🇩 Indonesia</span>
+        <span class="tag">🇹🇭 Thailand</span>
+        <span class="tag">🇵🇭 Philippines</span>
+        <span class="tag">🇭🇰 Hong Kong</span>
+        <span class="tag">🇲🇴 Macau</span>
+        <span class="tag">🇮🇳 India</span>
+        <span class="tag">🇨🇳 China</span>
+        <span class="tag">🇱🇰 Sri Lanka</span>
+        <span class="tag">🇸🇬 Singapore</span>
+        <span class="tag">🇴🇲 Oman</span>
+        <span class="tag">🇦🇪 UAE</span>
+        <span class="tag">🇹🇷 Turkey</span>
+        <span class="tag">🇰🇷 South Korea</span>
+        <span class="tag">🇧🇭 Bahrain</span>
+        <span class="tag">🇶🇦 Qatar</span>
+        <span class="tag">🇲🇻 Maldives</span>
+        <span class="tag">🇬🇪 Georgia</span>
+        <span class="tag">🇰🇼 Kuwait</span>
+        <span class="tag">🇺🇿 Uzbekistan</span>
+        <span class="tag">🇦🇿 Azerbaijan</span>
+      </div>
+
+      <div class="group-head reveal"><h3>Europe</h3><span class="count">10</span></div>
+      <div class="tags reveal" style="margin-bottom:10px">
+        <span class="tag">🇪🇸 Spain</span>
+        <span class="tag">🇩🇪 Germany</span>
+        <span class="tag">🇫🇷 France</span>
+        <span class="tag">🇧🇪 Belgium</span>
+        <span class="tag">🇬🇧 United Kingdom</span>
+        <span class="tag">🇮🇪 Ireland</span>
+        <span class="tag">🇳🇱 Netherlands</span>
+        <span class="tag">🇨🇾 Cyprus</span>
+        <span class="tag">🇮🇹 Italy</span>
+        <span class="tag">🇲🇩 Moldova</span>
+      </div>
+
+      <div class="group-head reveal"><h3>Africa</h3><span class="count">2</span></div>
+      <div class="tags reveal" style="margin-bottom:10px">
+        <span class="tag">🇪🇬 Egypt</span>
+        <span class="tag">🇺🇬 Uganda</span>
+      </div>
+
+      <div class="group-head reveal"><h3>Americas</h3><span class="count">1</span></div>
+      <div class="tags reveal" style="margin-bottom:10px">
+        <span class="tag">🇺🇸 USA</span>
+      </div>
+
+      <div class="group-head reveal"><h3>Oceania</h3><span class="count">1</span></div>
+      <div class="tags reveal" style="margin-bottom:10px">
+        <span class="tag">🇦🇺 Australia</span>
+      </div>
+
+      <div class="note reveal" style="margin-top:20px">
+        This is a personal life list — for the academic side of the road (conferences, keynotes, fieldwork with dates), see the <strong>Gallery</strong> tab above or the full <a href="travel.html">travel log →</a>.
+      </div>
+    </div>
+
+    <!-- ============ GALLERY ============ -->
+    <div data-cat="gallery" class="hidden">
+
+      <div class="note reveal" style="margin-bottom:30px">
+        A handful of stops from 25 years of conferences, keynotes and fieldwork. See the <a href="travel.html">full travel gallery →</a> for the complete list with dates and details, or drop photos into <code>assets/gallery/</code> to replace any tile's placeholder.
+      </div>
+
+      <div class="gallery reveal">
+
+        <div class="gitem" data-caption="Glasgow, United Kingdom — University of Strathclyde (PhD & Visiting Researcher)">
+          <div class="ph" style="background:linear-gradient(135deg,#1b3a5c,#2f5f86)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span style="color:#fff">Glasgow, UK</span></div>
+          <div class="cap">University of Strathclyde<span class="loc">Doctoral &amp; visiting research</span></div>
+        </div>
+
+        <div class="gitem" data-caption="Florence, Italy — ACM Multimedia & EU Virtual Heritage Village (2010–2012)">
+          <div class="ph" style="background:linear-gradient(135deg,#7a5a1e,#c29a4a)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span style="color:#fff">Florence, Italy</span></div>
+          <div class="cap">ACM Multimedia · VR Heritage Village<span class="loc">2010 – 2012</span></div>
+        </div>
+
+        <div class="gitem" data-caption="Dubai, UAE — Digital Futures Congress & ICIT Trends (Keynote, 2025)">
+          <div class="ph" style="background:linear-gradient(135deg,#243b55,#4a6f96)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span style="color:#fff">Dubai, UAE</span></div>
+          <div class="cap">Keynote · Digital Futures Congress<span class="loc">2024 – 2025</span></div>
+        </div>
+
+        <div class="gitem" data-caption="Fukuoka, Japan — International Conference on AI and Virtual Reality (AIVR 2024)">
+          <div class="ph" style="background:linear-gradient(135deg,#5c1e2e,#a8455f)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span style="color:#fff">Fukuoka, Japan</span></div>
+          <div class="cap">AIVR 2024 · IRIS photography AI<span class="loc">2024</span></div>
+        </div>
+
+        <div class="gitem" data-caption="Jeddah, Saudi Arabia — Effat University & Jeddah Film Festival (2015–2019)">
+          <div class="ph" style="background:linear-gradient(135deg,#6b4a1e,#b0894a)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span style="color:#fff">Jeddah, KSA</span></div>
+          <div class="cap">Effat University · Jeddah Film Festival<span class="loc">2015 – 2019</span></div>
+        </div>
+
+        <div class="gitem" data-caption="Sydney, Australia — Information Technology and Applications (ICITA 2005)">
+          <div class="ph" style="background:linear-gradient(135deg,#12495a,#2f8f96)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span style="color:#fff">Sydney, Australia</span></div>
+          <div class="cap">ICITA · Speech emotion research<span class="loc">2005</span></div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
+
+<!-- Lightbox — behaviour already provided by assets/main.js -->
+<div class="lb" id="lightbox">
+  <button class="close" aria-label="Close">&times;</button>
+  <img src="" alt="">
+  <div class="cap"></div>
+</div>
 
 <div id="site-footer"></div>
 <script src="assets/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
