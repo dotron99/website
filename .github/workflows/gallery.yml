@@ -1,0 +1,36 @@
+name: Build gallery list
+
+# Whenever you add or remove an image in assets/gallery/, rebuild photos.json
+# so the website's Gallery tab updates automatically — no manual editing.
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'assets/gallery/**'
+      - '.github/scripts/build-gallery.py'
+  workflow_dispatch:      # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write         # allows the action to commit the updated photos.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Generate photos.json from the images in assets/gallery/
+        run: python3 .github/scripts/build-gallery.py
+
+      - name: Commit photos.json if it changed
+        run: |
+          if [ -n "$(git status --porcelain assets/gallery/photos.json)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/gallery/photos.json
+            git commit -m "chore: auto-update gallery photos.json"
+            git push
+          else
+            echo "photos.json is already up to date — nothing to commit."
+          fi
