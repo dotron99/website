@@ -20,6 +20,13 @@
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
   --emoji:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
 }
+
+/* ---- category colours: solid fill, white text on every one (all ≥4.9:1 contrast) ---- */
+.c-teal   {--fill:#0b5c57;--fillHover:#094a46}
+.c-clay   {--fill:#7a4419;--fillHover:#603614}
+.c-indigo {--fill:#363f83;--fillHover:#2b3369}
+.c-plum   {--fill:#7c2b54;--fillHover:#642243}
+
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --ink:#f2eee8; --ink-soft:#b6ada2; --ink-faint:#8a8178;
@@ -36,6 +43,7 @@
 }
 
 *{box-sizing:border-box}
+[hidden]{display:none !important}   /* beats .posts{display:grid} on the archive list */
 body{
   margin:0;background:var(--bg);color:var(--ink);
   font-family:var(--sans);font-size:16px;line-height:1.65;
@@ -80,13 +88,6 @@ h1{
 .panel{animation:rise .35s ease both}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-/* ---------- notice ---------- */
-.notice{
-  background:var(--accent-soft);border:1px solid var(--line);
-  border-radius:10px;padding:14px 18px;font-size:14px;
-  color:var(--ink-soft);margin:0 0 36px
-}
-.notice strong{color:var(--ink)}
 code{
   font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;
   background:var(--bg);border:1px solid var(--line);
@@ -96,36 +97,59 @@ code{
 /* ---------- post cards ---------- */
 .posts{display:grid;gap:20px}
 .post{
-  display:block;text-decoration:none;color:inherit;
-  background:var(--surface);border:1px solid var(--line);
-  border-radius:14px;padding:28px 30px;box-shadow:var(--shadow);
-  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease
+  display:block;text-decoration:none;color:#fff;
+  background:var(--fill,var(--accent));
+  border:1px solid rgba(0,0,0,.1);
+  border-radius:14px;padding:26px 30px;box-shadow:var(--shadow);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease
 }
 .post:hover{
-  transform:translateY(-3px);border-color:var(--accent);
-  box-shadow:0 2px 4px rgba(24,22,20,.06),0 18px 40px -18px rgba(24,22,20,.3)
+  transform:translateY(-3px);background:var(--fillHover,var(--accent));
+  box-shadow:0 4px 10px rgba(0,0,0,.16),0 20px 44px -18px rgba(0,0,0,.45)
 }
-.post:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.post:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .tag{
   display:inline-block;font-size:11px;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
-  background:var(--accent-soft);border-radius:100px;
-  padding:4px 11px;margin-bottom:14px
+  letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:rgba(255,255,255,.2);
+  border-radius:100px;padding:4px 11px;margin-bottom:14px
 }
 .post h2{
-  font-family:var(--serif);font-weight:600;
+  font-family:var(--serif);font-weight:600;color:#fff;
   font-size:clamp(21px,3vw,25px);line-height:1.25;
   letter-spacing:-.01em;margin:0 0 10px
 }
-.post p{margin:0 0 18px;color:var(--ink-soft);font-size:15.5px;max-width:62ch}
+.post p{margin:0 0 18px;color:rgba(255,255,255,.88);font-size:15.5px;max-width:62ch}
 .meta{
   display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-  font-size:13px;color:var(--ink-faint)
+  font-size:13px;color:rgba(255,255,255,.72)
 }
-.meta .dot{opacity:.5}
-.meta .go{margin-left:auto;color:var(--accent);font-weight:600}
+.meta .dot{opacity:.7}
+.meta .go{margin-left:auto;color:#fff;font-weight:700}
 .post:hover .go .arrow{transform:translateX(4px)}
 .arrow{display:inline-block;transition:transform .2s ease}
+
+/* ---------- archive ---------- */
+.archive{margin-top:26px}
+.archive-toggle{
+  width:100%;display:flex;align-items:center;gap:14px;
+  background:none;border:1px dashed var(--line);border-radius:14px;
+  padding:16px 22px;cursor:pointer;font-family:inherit;
+  color:var(--ink-soft);font-size:14.5px;text-align:left;
+  transition:border-color .18s,color .18s,background .18s
+}
+.archive-toggle:hover{border-color:var(--accent);color:var(--ink);background:var(--surface)}
+.archive-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.archive-num{
+  font-family:var(--serif);font-size:26px;font-weight:600;
+  line-height:1;color:var(--accent);min-width:1.2em;text-align:center
+}
+.archive-label{flex:1}
+.archive-label b{color:var(--ink);font-weight:600}
+.chev{font-size:18px;transition:transform .22s ease;opacity:.6}
+.archive-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.archive-list{margin-top:18px}
+.archive-list .post{opacity:.92}
 
 /* ---------- stats ---------- */
 .stats{
@@ -209,8 +233,9 @@ footer{padding:64px 0 72px;color:var(--ink-faint);font-size:13px}
 @media (max-width:640px){
   header{padding-top:48px}
   .wrap{padding:0 18px}
-  .post{padding:24px 22px}
-  .stats{grid-template-columns:1fr;}
+  .post{padding:22px 20px}
+  .stats{grid-template-columns:1fr}
+  .archive-toggle{padding:14px 16px}
 }
 </style>
 </head>
@@ -233,11 +258,19 @@ footer{padding:64px 0 72px;color:var(--ink-faint);font-size:13px}
   <!-- ============ BLOG ============ -->
   <section class="panel" id="panel-blog" role="tabpanel" aria-labelledby="tab-blog">
 
-    <p class="notice"><strong>Starter posts.</strong> Three articles are included to get you going — edit them freely, or add a new post by copying one of the <code>blog-*.html</code> files and adding a card below.</p>
+    <div class="posts" id="postList">
 
-    <div class="posts">
+      <a class="post c-plum" href="blog-ai-workshop-cambodia.html" data-date="2026-08">
+        <span class="tag">Workshops &amp; Outreach</span>
+        <h2>AI Workshop in Cambodia</h2>
+        <p>Taking a hands-on generative AI workshop to Phnom Penh — what carries across borders unchanged, what has to be rebuilt for local context, and what the room taught me in return.</p>
+        <div class="meta">
+          <span>Aug 2026</span><span class="dot">·</span><span>5 min read</span>
+          <span class="go">Read <span class="arrow">→</span></span>
+        </div>
+      </a>
 
-      <a class="post" href="blog-genai-education.html">
+      <a class="post c-teal" href="blog-genai-education.html" data-date="2026-07">
         <span class="tag">Education &amp; AI</span>
         <h2>Teaching in the Age of Generative AI: Lessons from Training 5,000 Professionals</h2>
         <p>What five thousand educators, executives and creatives have taught me about adopting AI well — and the support gaps that still hold people back.</p>
@@ -247,7 +280,7 @@ footer{padding:64px 0 72px;color:var(--ink-faint);font-size:13px}
         </div>
       </a>
 
-      <a class="post" href="blog-digital-heritage.html">
+      <a class="post c-clay" href="blog-digital-heritage.html" data-date="2026-06">
         <span class="tag">Digital Heritage</span>
         <h2>Preserving Heritage in Pixels: Reconstructing the A Famosa Fortress</h2>
         <p>How fragments of text and image become a defensible 3D reconstruction — and why digital heritage is as much about evidence and ethics as it is about rendering.</p>
@@ -257,7 +290,7 @@ footer{padding:64px 0 72px;color:var(--ink-faint);font-size:13px}
         </div>
       </a>
 
-      <a class="post" href="blog-2d-to-3d-ai.html">
+      <a class="post c-indigo" href="blog-2d-to-3d-ai.html" data-date="2026-05">
         <span class="tag">AI &amp; Animation</span>
         <h2>From 2D to 3D: Building an AI-Augmented Animation Pipeline</h2>
         <p>A practical look at where generative AI genuinely helps a high-fidelity animation workflow — and where the artist still has to lead.</p>
@@ -268,6 +301,16 @@ footer{padding:64px 0 72px;color:var(--ink-faint);font-size:13px}
       </a>
 
     </div>
+
+    <div class="archive" id="archive" hidden>
+      <button class="archive-toggle" id="archiveToggle" aria-expanded="false" aria-controls="archiveList">
+        <span class="archive-num" id="archiveNum">0</span>
+        <span class="archive-label">earlier <b id="archiveWord">posts</b> in the archive</span>
+        <span class="chev" aria-hidden="true">⌄</span>
+      </button>
+      <div class="posts archive-list" id="archiveList" hidden></div>
+    </div>
+
   </section>
 
   <!-- ============ COUNTRIES ============ -->
@@ -416,6 +459,8 @@ footer{padding:64px 0 72px;color:var(--ink-faint);font-size:13px}
 
 <script>
 (function(){
+  var SHOW = 3;   /* how many posts stay on the page; the rest go to the archive */
+
   /* --- tabs --- */
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
   function show(tab){
@@ -436,12 +481,34 @@ footer{padding:64px 0 72px;color:var(--ink-faint);font-size:13px}
     });
   });
   var hash = (location.hash || '').replace('#','');
-  if (hash){
-    var target = document.getElementById('tab-'+hash);
-    if (target) show(target);
+  if (hash){ var target = document.getElementById('tab-'+hash); if (target) show(target); }
+
+  /* --- newest 3 on show, the rest archived --- */
+  var list = document.getElementById('postList');
+  var posts = Array.prototype.slice.call(list.querySelectorAll('.post'));
+  posts.sort(function(a,b){
+    return (b.dataset.date || '').localeCompare(a.dataset.date || '');
+  });
+  posts.forEach(function(p){ list.appendChild(p); });
+
+  var older = posts.slice(SHOW);
+  var box = document.getElementById('archive');
+  if (older.length){
+    var listEl = document.getElementById('archiveList');
+    older.forEach(function(p){ listEl.appendChild(p); });
+    document.getElementById('archiveNum').textContent = older.length;
+    document.getElementById('archiveWord').textContent = older.length === 1 ? 'post' : 'posts';
+    box.hidden = false;
+
+    var btn = document.getElementById('archiveToggle');
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      listEl.hidden = open;
+    });
   }
 
-  /* --- counts stay honest: recomputed from the lists above --- */
+  /* --- country counts, recomputed from the lists themselves --- */
   var regions = document.querySelectorAll('.region'), total = 0, continents = 0;
   Array.prototype.forEach.call(regions, function(r){
     var n = r.querySelectorAll('.country').length;
