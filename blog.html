@@ -1,89 +1,461 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Description" content="Essays on generative AI, digital heritage and teaching, alongside visited countries and a travel gallery — Dr. Mohamad Izani.">
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p4 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #000000; color: rgba(0, 0, 0, 0.85); -webkit-text-stroke: rgba(0, 0, 0, 0.85)}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9}
-    p.p8 {margin: 0.0px 0.0px 26.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #ffffff; -webkit-text-stroke: #ffffff}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; background-color: #b3b3b3}
-    span.s3 {font: 12.0px Times; font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
-    span.s4 {font: 13.0px Menlo; font-kerning: none}
-    span.s5 {text-decoration: underline ; font-kerning: none}
-    span.s6 {font: 14.0px Times; text-decoration: underline ; font-kerning: none}
-    span.s7 {font: 12.0px 'Times New Roman'; font-kerning: none}
-    span.s8 {font: 12.0px 'Apple Color Emoji'; font-kerning: none}
-    span.s9 {text-decoration: underline ; font-kerning: none; color: #0000e9; -webkit-text-stroke: 0px #0000e9}
-    span.s10 {font: 12.0px 'Times New Roman'; text-decoration: underline ; font-kerning: none; color: #0000e9; -webkit-text-stroke: 0px #0000e9}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog &amp; Insights — Dr. Mohamad Izani</title>
+<meta name="description" content="Essays on generative AI, digital heritage and teaching, alongside visited countries and a travel gallery — Dr. Mohamad Izani.">
+<style>
+:root{
+  --ink:#181614;
+  --ink-soft:#57514a;
+  --ink-faint:#8b837a;
+  --bg:#faf8f5;
+  --surface:#ffffff;
+  --line:#e6e0d8;
+  --accent:#0f5c58;
+  --accent-soft:#e6f0ef;
+  --shadow:0 1px 2px rgba(24,22,20,.05),0 8px 24px -12px rgba(24,22,20,.16);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --emoji:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#f2eee8; --ink-soft:#b6ada2; --ink-faint:#8a8178;
+    --bg:#12110f; --surface:#1c1a17; --line:#302c27;
+    --accent:#6fbdb4; --accent-soft:#17322f;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#f2eee8; --ink-soft:#b6ada2; --ink-faint:#8a8178;
+  --bg:#12110f; --surface:#1c1a17; --line:#302c27;
+  --accent:#6fbdb4; --accent-soft:#17322f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* ---------- header ---------- */
+header{padding:72px 0 0}
+.eyebrow{
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin:0 0 14px
+}
+h1{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(38px,6.2vw,60px);line-height:1.05;
+  letter-spacing:-.02em;margin:0 0 18px
+}
+.lede{
+  font-size:clamp(17px,2.2vw,19px);color:var(--ink-soft);
+  max-width:60ch;margin:0 0 40px
+}
+
+/* ---------- tabs ---------- */
+.tabs{
+  display:flex;gap:4px;border-bottom:1px solid var(--line);
+  margin-bottom:48px;overflow-x:auto;scrollbar-width:none
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  appearance:none;background:none;border:0;cursor:pointer;
+  font-family:inherit;font-size:14px;font-weight:600;color:var(--ink-faint);
+  padding:12px 18px;white-space:nowrap;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color .15s,border-color .15s
+}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+.panel[hidden]{display:none}
+.panel{animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- notice ---------- */
+.notice{
+  background:var(--accent-soft);border:1px solid var(--line);
+  border-radius:10px;padding:14px 18px;font-size:14px;
+  color:var(--ink-soft);margin:0 0 36px
+}
+.notice strong{color:var(--ink)}
+code{
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;
+  background:var(--bg);border:1px solid var(--line);
+  border-radius:4px;padding:1px 5px
+}
+
+/* ---------- post cards ---------- */
+.posts{display:grid;gap:20px}
+.post{
+  display:block;text-decoration:none;color:inherit;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:28px 30px;box-shadow:var(--shadow);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease
+}
+.post:hover{
+  transform:translateY(-3px);border-color:var(--accent);
+  box-shadow:0 2px 4px rgba(24,22,20,.06),0 18px 40px -18px rgba(24,22,20,.3)
+}
+.post:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.tag{
+  display:inline-block;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+  background:var(--accent-soft);border-radius:100px;
+  padding:4px 11px;margin-bottom:14px
+}
+.post h2{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(21px,3vw,25px);line-height:1.25;
+  letter-spacing:-.01em;margin:0 0 10px
+}
+.post p{margin:0 0 18px;color:var(--ink-soft);font-size:15.5px;max-width:62ch}
+.meta{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  font-size:13px;color:var(--ink-faint)
+}
+.meta .dot{opacity:.5}
+.meta .go{margin-left:auto;color:var(--accent);font-weight:600}
+.post:hover .go .arrow{transform:translateX(4px)}
+.arrow{display:inline-block;transition:transform .2s ease}
+
+/* ---------- stats ---------- */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;margin:0 0 44px
+}
+.stat{background:var(--surface);padding:26px 20px;text-align:center}
+.stat .num{
+  font-family:var(--serif);font-size:clamp(30px,5vw,42px);
+  font-weight:600;line-height:1;color:var(--accent);display:block
+}
+.stat .label{
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);margin-top:9px;display:block
+}
+
+/* ---------- regions ---------- */
+.region{margin:0 0 34px}
+.region-head{
+  display:flex;align-items:baseline;gap:12px;
+  padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:16px
+}
+.region-head h3{
+  font-family:var(--serif);font-size:19px;font-weight:600;
+  letter-spacing:-.01em;margin:0
+}
+.count{
+  font-size:12px;font-weight:700;color:var(--accent);
+  background:var(--accent-soft);border-radius:100px;padding:2px 10px
+}
+.countries{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.country{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:100px;padding:6px 14px 6px 11px;
+  font-size:14px;transition:border-color .15s,transform .15s
+}
+.country:hover{border-color:var(--accent);transform:translateY(-1px)}
+.flag{font-family:var(--emoji);font-size:16px;line-height:1}
+.country.is-new{border-color:var(--accent);background:var(--accent-soft)}
+.country.is-new::after{
+  content:"new";font-size:9.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent);opacity:.85
+}
+
+/* ---------- gallery ---------- */
+.gallery{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px
+}
+.tile{
+  position:relative;border-radius:14px;overflow:hidden;
+  min-height:230px;display:flex;align-items:flex-end;
+  border:1px solid var(--line);box-shadow:var(--shadow);
+  background-size:cover;background-position:center;
+  transition:transform .25s ease
+}
+.tile:hover{transform:translateY(-3px)}
+.tile::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,9,8,.86) 0%,rgba(10,9,8,.35) 45%,rgba(10,9,8,.08) 100%)
+}
+.tile-body{position:relative;padding:22px;color:#fff}
+.tile-body h4{
+  font-family:var(--serif);font-size:20px;font-weight:600;
+  margin:0 0 5px;letter-spacing:-.01em
+}
+.tile-body .where{font-size:13.5px;opacity:.92;margin:0;line-height:1.45}
+.tile-body .when{font-size:12px;opacity:.72;margin:4px 0 0;letter-spacing:.04em}
+
+/* ---------- footnote ---------- */
+.foot{
+  margin-top:40px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:14.5px;color:var(--ink-soft)
+}
+a.inline{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
+a.inline:hover{opacity:.75}
+
+footer{padding:64px 0 72px;color:var(--ink-faint);font-size:13px}
+
+@media (max-width:640px){
+  header{padding-top:48px}
+  .wrap{padding:0 18px}
+  .post{padding:24px 22px}
+  .stats{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p2"><span class="s1">Writing</span></p>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Blog &amp; Insights</b></span></h1>
-<p class="p4"><span class="s1">Notes from the intersection of generative AI, digital heritage, immersive media and teaching. Thoughts drawn from the studio, the classroom and the road.</span></p>
-<p class="p5"><span class="s2">Blog</span><span class="s3"> </span><span class="s2">Visited Countries</span><span class="s3"> </span><span class="s2">Gallery</span></p>
-<p class="p2"><span class="s1"><b>Starter posts.</b> Three articles are included to get you going — edit them freely, or add a new post by copying one of the </span><span class="s4">blog-*.html</span><span class="s1"> files and adding a card below.</span></p>
-<p class="p6"><span class="s5"><a href="file:///Users/izanizainal/Downloads/blog-genai-education.html">Teaching in the Age of Generative AI</a></span></p>
-<p class="p2"><span class="s1">Education &amp; AI</span></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9"><span class="s5"><a href="file:///Users/izanizainal/Downloads/blog-genai-education.html"><b>Teaching in the Age of Generative AI: Lessons from Training 5,000 Professionals</b><span class="s6"><b></b></span></a></span></h3>
-<p class="p4"><span class="s1">What five thousand educators, executives and creatives have taught me about adopting AI well — and the support gaps that still hold people back.</span></p>
-<p class="p2"><span class="s1">Jul 2026 · 6 min readRead </span><span class="s7">→</span></p>
-<p class="p6"><span class="s5"><a href="file:///Users/izanizainal/Downloads/blog-digital-heritage.html">Preserving Heritage in Pixels</a></span></p>
-<p class="p2"><span class="s1">Digital Heritage</span></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9"><span class="s5"><a href="file:///Users/izanizainal/Downloads/blog-digital-heritage.html"><b>Preserving Heritage in Pixels: Reconstructing the A Famosa Fortress</b><span class="s6"><b></b></span></a></span></h3>
-<p class="p4"><span class="s1">How fragments of text and image become a defensible 3D reconstruction — and why digital heritage is as much about evidence and ethics as it is about rendering.</span></p>
-<p class="p2"><span class="s1">Jun 2026 · 7 min readRead </span><span class="s7">→</span></p>
-<p class="p6"><span class="s5"><a href="file:///Users/izanizainal/Downloads/blog-2d-to-3d-ai.html">From 2D to 3D</a></span></p>
-<p class="p2"><span class="s1">AI &amp; Animation</span></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9"><span class="s5"><a href="file:///Users/izanizainal/Downloads/blog-2d-to-3d-ai.html"><b>From 2D to 3D: Building an AI-Augmented Animation Pipeline</b><span class="s6"><b></b></span></a></span></h3>
-<p class="p4"><span class="s1">A practical look at where generative AI genuinely helps a high-fidelity animation workflow — and where the artist still has to lead.</span></p>
-<p class="p2"><span class="s1">May 2026 · 6 min readRead </span><span class="s7">→</span></p>
-<p class="p8"><span class="s1">I consider myself incredibly fortunate to have endless opportunities to immerse myself in the lives and cultures of others, to experience the joy of living and forge connections with people from all corners of the globe. As I continue to travel and explore, the list of places I've visited grows, and there are still countless more to be discovered.</span></p>
-<p class="p2"><span class="s1">37Countries Visited</span></p>
-<p class="p2"><span class="s1">5Continents</span></p>
-<p class="p2"><span class="s1">∞Still To Explore</span></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Asia &amp; Middle East</b></span></h3>
-<p class="p2"><span class="s1">23</span></p>
-<p class="p2"><span class="s8">🇸🇦</span><span class="s1"> Saudi Arabia </span><span class="s8">🇯🇵</span><span class="s1"> Japan </span><span class="s8">🇾🇪</span><span class="s1"> Yemen </span><span class="s8">🇮🇩</span><span class="s1"> Indonesia </span><span class="s8">🇹🇭</span><span class="s1"> Thailand </span><span class="s8">🇵🇭</span><span class="s1"> Philippines </span><span class="s8">🇭🇰</span><span class="s1"> Hong Kong </span><span class="s8">🇲🇴</span><span class="s1"> Macau </span><span class="s8">🇮🇳</span><span class="s1"> India </span><span class="s8">🇨🇳</span><span class="s1"> China </span><span class="s8">🇱🇰</span><span class="s1"> Sri Lanka </span><span class="s8">🇸🇬</span><span class="s1"> Singapore </span><span class="s8">🇴🇲</span><span class="s1"> Oman </span><span class="s8">🇦🇪</span><span class="s1"> UAE </span><span class="s8">🇹🇷</span><span class="s1"> Turkey </span><span class="s8">🇰🇷</span><span class="s1"> South Korea </span><span class="s8">🇧🇭</span><span class="s1"> Bahrain </span><span class="s8">🇶🇦</span><span class="s1"> Qatar </span><span class="s8">🇲🇻</span><span class="s1"> Maldives </span><span class="s8">🇬🇪</span><span class="s1"> Georgia </span><span class="s8">🇰🇼</span><span class="s1"> Kuwait </span><span class="s8">🇺🇿</span><span class="s1"> Uzbekistan </span><span class="s8">🇦🇿</span><span class="s1"> Azerbaijan</span></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Europe</b></span></h3>
-<p class="p2"><span class="s1">10</span></p>
-<p class="p2"><span class="s8">🇪🇸</span><span class="s1"> Spain </span><span class="s8">🇩🇪</span><span class="s1"> Germany </span><span class="s8">🇫🇷</span><span class="s1"> France </span><span class="s8">🇧🇪</span><span class="s1"> Belgium </span><span class="s8">🇬🇧</span><span class="s1"> United Kingdom </span><span class="s8">🇮🇪</span><span class="s1"> Ireland </span><span class="s8">🇳🇱</span><span class="s1"> Netherlands </span><span class="s8">🇨🇾</span><span class="s1"> Cyprus </span><span class="s8">🇮🇹</span><span class="s1"> Italy </span><span class="s8">🇲🇩</span><span class="s1"> Moldova</span></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Africa</b></span></h3>
-<p class="p2"><span class="s1">2</span></p>
-<p class="p2"><span class="s8">🇪🇬</span><span class="s1"> Egypt </span><span class="s8">🇺🇬</span><span class="s1"> Uganda</span></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Americas</b></span></h3>
-<p class="p2"><span class="s1">1</span></p>
-<p class="p2"><span class="s8">🇺🇸</span><span class="s1"> USA</span></p>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Oceania</b></span></h3>
-<p class="p2"><span class="s1">1</span></p>
-<p class="p2"><span class="s8">🇦🇺</span><span class="s1"> Australia</span></p>
-<p class="p2"><span class="s1">This is a personal life list — for the academic side of the road (conferences, keynotes, fieldwork with dates), see the <b>Gallery</b> tab above or the full <a href="file:///Users/izanizainal/Downloads/travel.html"><span class="s9">travel log </span><span class="s10">→</span></a>.</span></p>
-<p class="p2"><span class="s1">A handful of stops from 25 years of conferences, keynotes and fieldwork. See the <a href="file:///Users/izanizainal/Downloads/travel.html"><span class="s9">full travel gallery </span><span class="s10">→</span></a> for the complete list with dates and details, or drop photos into </span><span class="s4">assets/gallery/</span><span class="s1"> to replace any tile's placeholder.</span></p>
-<p class="p10"><span class="s1">Glasgow, UK</span></p>
-<p class="p2"><span class="s1">University of StrathclydeDoctoral &amp; visiting research</span></p>
-<p class="p10"><span class="s1">Florence, Italy</span></p>
-<p class="p2"><span class="s1">ACM Multimedia · VR Heritage Village2010 – 2012</span></p>
-<p class="p10"><span class="s1">Dubai, UAE</span></p>
-<p class="p2"><span class="s1">Keynote · Digital Futures Congress2024 – 2025</span></p>
-<p class="p10"><span class="s1">Fukuoka, Japan</span></p>
-<p class="p2"><span class="s1">AIVR 2024 · IRIS photography AI2024</span></p>
-<p class="p10"><span class="s1">Jeddah, KSA</span></p>
-<p class="p2"><span class="s1">Effat University · Jeddah Film Festival2015 – 2019</span></p>
-<p class="p10"><span class="s1">Sydney, Australia</span></p>
-<p class="p2"><span class="s1">ICITA · Speech emotion research2005</span></p>
-<p class="p5"><span class="s2">×</span></p>
-<p class="p1"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"></span><br></p>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Writing</p>
+    <h1>Blog &amp; Insights</h1>
+    <p class="lede">Notes from the intersection of generative AI, digital heritage, immersive media and teaching. Thoughts drawn from the studio, the classroom and the road.</p>
+
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tab-blog" aria-controls="panel-blog" aria-selected="true">Blog</button>
+      <button class="tab" role="tab" id="tab-countries" aria-controls="panel-countries" aria-selected="false">Visited Countries</button>
+      <button class="tab" role="tab" id="tab-gallery" aria-controls="panel-gallery" aria-selected="false">Gallery</button>
+    </nav>
+  </header>
+
+  <!-- ============ BLOG ============ -->
+  <section class="panel" id="panel-blog" role="tabpanel" aria-labelledby="tab-blog">
+
+    <p class="notice"><strong>Starter posts.</strong> Three articles are included to get you going — edit them freely, or add a new post by copying one of the <code>blog-*.html</code> files and adding a card below.</p>
+
+    <div class="posts">
+
+      <a class="post" href="blog-genai-education.html">
+        <span class="tag">Education &amp; AI</span>
+        <h2>Teaching in the Age of Generative AI: Lessons from Training 5,000 Professionals</h2>
+        <p>What five thousand educators, executives and creatives have taught me about adopting AI well — and the support gaps that still hold people back.</p>
+        <div class="meta">
+          <span>Jul 2026</span><span class="dot">·</span><span>6 min read</span>
+          <span class="go">Read <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="post" href="blog-digital-heritage.html">
+        <span class="tag">Digital Heritage</span>
+        <h2>Preserving Heritage in Pixels: Reconstructing the A Famosa Fortress</h2>
+        <p>How fragments of text and image become a defensible 3D reconstruction — and why digital heritage is as much about evidence and ethics as it is about rendering.</p>
+        <div class="meta">
+          <span>Jun 2026</span><span class="dot">·</span><span>7 min read</span>
+          <span class="go">Read <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="post" href="blog-2d-to-3d-ai.html">
+        <span class="tag">AI &amp; Animation</span>
+        <h2>From 2D to 3D: Building an AI-Augmented Animation Pipeline</h2>
+        <p>A practical look at where generative AI genuinely helps a high-fidelity animation workflow — and where the artist still has to lead.</p>
+        <div class="meta">
+          <span>May 2026</span><span class="dot">·</span><span>6 min read</span>
+          <span class="go">Read <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ COUNTRIES ============ -->
+  <section class="panel" id="panel-countries" role="tabpanel" aria-labelledby="tab-countries" hidden>
+
+    <p class="lede" style="margin-bottom:36px">I consider myself incredibly fortunate to have endless opportunities to immerse myself in the lives and cultures of others, to experience the joy of living and forge connections with people from all corners of the globe. As I continue to travel and explore, the list of places I've visited grows, and there are still countless more to be discovered.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="num" data-total>39</span><span class="label">Countries Visited</span></div>
+      <div class="stat"><span class="num" data-continents>5</span><span class="label">Continents</span></div>
+      <div class="stat"><span class="num">∞</span><span class="label">Still To Explore</span></div>
+    </div>
+
+    <div class="region">
+      <div class="region-head"><h3>Asia &amp; Middle East</h3><span class="count">25</span></div>
+      <ul class="countries">
+        <li class="country"><span class="flag">🇸🇦</span>Saudi Arabia</li>
+        <li class="country"><span class="flag">🇯🇵</span>Japan</li>
+        <li class="country"><span class="flag">🇾🇪</span>Yemen</li>
+        <li class="country"><span class="flag">🇮🇩</span>Indonesia</li>
+        <li class="country"><span class="flag">🇹🇭</span>Thailand</li>
+        <li class="country"><span class="flag">🇵🇭</span>Philippines</li>
+        <li class="country"><span class="flag">🇭🇰</span>Hong Kong</li>
+        <li class="country"><span class="flag">🇲🇴</span>Macau</li>
+        <li class="country"><span class="flag">🇮🇳</span>India</li>
+        <li class="country"><span class="flag">🇨🇳</span>China</li>
+        <li class="country"><span class="flag">🇱🇰</span>Sri Lanka</li>
+        <li class="country"><span class="flag">🇸🇬</span>Singapore</li>
+        <li class="country"><span class="flag">🇴🇲</span>Oman</li>
+        <li class="country"><span class="flag">🇦🇪</span>UAE</li>
+        <li class="country"><span class="flag">🇹🇷</span>Turkey</li>
+        <li class="country"><span class="flag">🇰🇷</span>South Korea</li>
+        <li class="country"><span class="flag">🇧🇭</span>Bahrain</li>
+        <li class="country"><span class="flag">🇶🇦</span>Qatar</li>
+        <li class="country"><span class="flag">🇲🇻</span>Maldives</li>
+        <li class="country"><span class="flag">🇬🇪</span>Georgia</li>
+        <li class="country"><span class="flag">🇰🇼</span>Kuwait</li>
+        <li class="country"><span class="flag">🇺🇿</span>Uzbekistan</li>
+        <li class="country"><span class="flag">🇦🇿</span>Azerbaijan</li>
+        <li class="country is-new"><span class="flag">🇰🇭</span>Cambodia</li>
+        <li class="country is-new"><span class="flag">🇵🇰</span>Pakistan</li>
+      </ul>
+    </div>
+
+    <div class="region">
+      <div class="region-head"><h3>Europe</h3><span class="count">10</span></div>
+      <ul class="countries">
+        <li class="country"><span class="flag">🇪🇸</span>Spain</li>
+        <li class="country"><span class="flag">🇩🇪</span>Germany</li>
+        <li class="country"><span class="flag">🇫🇷</span>France</li>
+        <li class="country"><span class="flag">🇧🇪</span>Belgium</li>
+        <li class="country"><span class="flag">🇬🇧</span>United Kingdom</li>
+        <li class="country"><span class="flag">🇮🇪</span>Ireland</li>
+        <li class="country"><span class="flag">🇳🇱</span>Netherlands</li>
+        <li class="country"><span class="flag">🇨🇾</span>Cyprus</li>
+        <li class="country"><span class="flag">🇮🇹</span>Italy</li>
+        <li class="country"><span class="flag">🇲🇩</span>Moldova</li>
+      </ul>
+    </div>
+
+    <div class="region">
+      <div class="region-head"><h3>Africa</h3><span class="count">2</span></div>
+      <ul class="countries">
+        <li class="country"><span class="flag">🇪🇬</span>Egypt</li>
+        <li class="country"><span class="flag">🇺🇬</span>Uganda</li>
+      </ul>
+    </div>
+
+    <div class="region">
+      <div class="region-head"><h3>Americas</h3><span class="count">1</span></div>
+      <ul class="countries">
+        <li class="country"><span class="flag">🇺🇸</span>USA</li>
+      </ul>
+    </div>
+
+    <div class="region">
+      <div class="region-head"><h3>Oceania</h3><span class="count">1</span></div>
+      <ul class="countries">
+        <li class="country"><span class="flag">🇦🇺</span>Australia</li>
+      </ul>
+    </div>
+
+    <p class="foot">This is a personal life list — for the academic side of the road (conferences, keynotes, fieldwork with dates), see the <strong>Gallery</strong> tab above or the full <a class="inline" href="travel.html">travel log →</a>.</p>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="panel" id="panel-gallery" role="tabpanel" aria-labelledby="tab-gallery" hidden>
+
+    <p class="lede" style="margin-bottom:36px">A handful of stops from 25 years of conferences, keynotes and fieldwork. See the <a class="inline" href="travel.html">full travel gallery →</a> for the complete list with dates and details, or drop photos into <code>assets/gallery/</code> to replace any tile's placeholder.</p>
+
+    <div class="gallery">
+
+      <figure class="tile" style="margin:0;background-image:url('assets/gallery/glasgow.jpg'),linear-gradient(150deg,#3c5a68,#1d2b33)">
+        <figcaption class="tile-body">
+          <h4>Glasgow, UK</h4>
+          <p class="where">University of Strathclyde</p>
+          <p class="when">Doctoral &amp; visiting research</p>
+        </figcaption>
+      </figure>
+
+      <figure class="tile" style="margin:0;background-image:url('assets/gallery/florence.jpg'),linear-gradient(150deg,#8a6640,#3a2a1c)">
+        <figcaption class="tile-body">
+          <h4>Florence, Italy</h4>
+          <p class="where">ACM Multimedia · VR Heritage Village</p>
+          <p class="when">2010 – 2012</p>
+        </figcaption>
+      </figure>
+
+      <figure class="tile" style="margin:0;background-image:url('assets/gallery/dubai.jpg'),linear-gradient(150deg,#b08a4e,#3a2c18)">
+        <figcaption class="tile-body">
+          <h4>Dubai, UAE</h4>
+          <p class="where">Keynote · Digital Futures Congress</p>
+          <p class="when">2024 – 2025</p>
+        </figcaption>
+      </figure>
+
+      <figure class="tile" style="margin:0;background-image:url('assets/gallery/fukuoka.jpg'),linear-gradient(150deg,#7a4a58,#2a1a20)">
+        <figcaption class="tile-body">
+          <h4>Fukuoka, Japan</h4>
+          <p class="where">AIVR 2024 · IRIS photography AI</p>
+          <p class="when">2024</p>
+        </figcaption>
+      </figure>
+
+      <figure class="tile" style="margin:0;background-image:url('assets/gallery/jeddah.jpg'),linear-gradient(150deg,#4a6b5a,#1a2a22)">
+        <figcaption class="tile-body">
+          <h4>Jeddah, KSA</h4>
+          <p class="where">Effat University · Jeddah Film Festival</p>
+          <p class="when">2015 – 2019</p>
+        </figcaption>
+      </figure>
+
+      <figure class="tile" style="margin:0;background-image:url('assets/gallery/sydney.jpg'),linear-gradient(150deg,#41627e,#18242e)">
+        <figcaption class="tile-body">
+          <h4>Sydney, Australia</h4>
+          <p class="where">ICITA · Speech emotion research</p>
+          <p class="when">2005</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <footer>© <span id="yr">2026</span> Dr. Mohamad Izani Zainal Abidin</footer>
+</div>
+
+<script>
+(function(){
+  /* --- tabs --- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function show(tab){
+    tabs.forEach(function(t){
+      var sel = t === tab;
+      t.setAttribute('aria-selected', sel ? 'true' : 'false');
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !sel;
+    });
+    if (history.replaceState) history.replaceState(null,'','#'+tab.id.replace('tab-',''));
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ show(t); });
+    t.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(t), n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i+1)%tabs.length];
+      if (e.key === 'ArrowLeft')  n = tabs[(i-1+tabs.length)%tabs.length];
+      if (n){ e.preventDefault(); n.focus(); show(n); }
+    });
+  });
+  var hash = (location.hash || '').replace('#','');
+  if (hash){
+    var target = document.getElementById('tab-'+hash);
+    if (target) show(target);
+  }
+
+  /* --- counts stay honest: recomputed from the lists above --- */
+  var regions = document.querySelectorAll('.region'), total = 0, continents = 0;
+  Array.prototype.forEach.call(regions, function(r){
+    var n = r.querySelectorAll('.country').length;
+    r.querySelector('.count').textContent = n;
+    if (n > 0) continents++;
+    total += n;
+  });
+  var t = document.querySelector('[data-total]');
+  var c = document.querySelector('[data-continents]');
+  if (t) t.textContent = total;
+  if (c) c.textContent = continents;
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
