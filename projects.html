@@ -1,2 +1,152 @@
 <!DOCTYPE html>
-<!-- see artifacts -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects & Grants — Dr. Mohamad Izani</title>
+<meta name="description" content="Research projects, animated heritage films and funded grants by Dr. Mohamad Izani.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+#research-outputs{scroll-margin-top:64px}
+.films{background:var(--bg-navy);color:#dfe7f0;border-bottom:3px solid var(--accent)}
+.films .sec-head h2{color:#fff}
+.films .sec-head p{color:#b9c6d6}
+.films .stat-row{margin:0 0 30px}
+.films .stat .num{color:#fff}
+.films .stat .lbl{color:#9fb0c4}
+.films .stat a{color:var(--accent);font-weight:600}
+.film-flow{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:22px;margin:0 0 30px}
+.film-flow h3{font-family:Inter,sans-serif;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#9fb0c4;margin-bottom:16px}
+.film-steps{display:grid;grid-template-columns:repeat(6,1fr);list-style:none}
+.film-steps li{padding-right:12px}
+.film-steps strong{display:block;margin-top:10px;color:#fff;font-size:.9rem}
+.film-steps span{display:block;color:#9fb0c4;font-size:.8rem}
+@media(max-width:860px){.film-steps{grid-template-columns:1fr;gap:14px}}
+.film-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.film-filter button{font-family:inherit;font-size:.86rem;cursor:pointer;background:transparent;border:1px solid rgba(255,255,255,.22);color:#dfe7f0;padding:8px 16px;border-radius:999px}
+.film-filter button.active{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.film-feature{display:grid;grid-template-columns:1.35fr 1fr;width:100%;padding:0;text-align:left;font:inherit;color:inherit;cursor:pointer;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);overflow:hidden}
+.film-feature .fbody{padding:26px 28px}
+.film-feature .fh{display:block;font-family:'Source Serif 4',Georgia,serif;color:#fff;font-size:1.6rem;margin:6px 0 10px}
+.film-feature .fp{display:block;color:#b9c6d6;margin-bottom:16px}
+.film-feature .go{color:var(--accent);font-weight:600}
+@media(max-width:760px){.film-feature{grid-template-columns:1fr}}
+.films .group-head h3{color:#fff}
+.films .group-note{color:#9fb0c4;margin:-8px 0 18px}
+.film-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media(max-width:860px){.film-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.film-grid{grid-template-columns:1fr}}
+.film{display:block;width:100%;padding:0;background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.film-thumb{position:relative;display:block;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0c1b2c}
+.film-thumb img{width:100%;height:100%;object-fit:cover}
+.film-dur{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.8);color:#fff;font-size:.74rem;padding:2px 7px;border-radius:5px}
+.film-meta{display:block;padding:12px 2px 0}
+.film-tag{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.film-name{display:block;font-family:'Source Serif 4',Georgia,serif;color:#fff;font-size:1.12rem;margin-top:3px}
+.film-sub{display:block;color:#9fb0c4;font-size:.86rem;margin-top:4px}
+.film-foot{display:flex;flex-wrap:wrap;justify-content:space-between;border-top:1px solid rgba(255,255,255,.12);margin-top:44px;padding-top:16px;color:#9fb0c4}
+.film-lb{position:fixed;inset:0;background:rgba(9,16,28,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.film-lb.open{display:flex}
+.film-lb .inner{width:min(1080px,100%)}
+.film-lb .frame{position:relative;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+.film-lb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.film-lb .bar{display:flex;justify-content:space-between;padding:12px 2px 0;color:#dfe7f0}
+.film-lb .close{position:absolute;top:18px;right:24px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div class="page-head">
+  <div class="wrap">
+    <span class="sec-eyebrow">Research & Practice</span>
+    <h1>Projects & Grants</h1>
+    <p>Two decades of funded research across digital heritage, immersive technology, and AI-driven media.</p>
+  </div>
+</div>
+<section class="films" id="research-outputs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Research Outputs</span>
+      <h2>Heritage Films</h2>
+      <p>Eight stories. Each one filmed and written. The written board is the warrant; the film is what the record is allowed to show.</p>
+    </div>
+    <div class="film-filter">
+      <button class="active" data-film-filter="all">All</button>
+      <button data-film-filter="heritage">Heritage</button>
+      <button data-film-filter="folklore">Folklore</button>
+      <button data-film-filter="place">Place</button>
+      <button data-film-filter="original">Original</button>
+    </div>
+    <div class="film-group" data-film-group="heritage">
+      <button class="film-feature" data-yt="Oi_yFK132VE" data-title="What Time Could Not Translate">
+        <span class="film-thumb"><img src="https://i.ytimg.com/vi/Oi_yFK132VE/hqdefault.jpg" alt=""></span>
+        <span class="fbody"><span class="film-tag">Featured</span><span class="fh">What Time Could Not Translate</span><span class="fp">What a model cannot say for a speaker.</span><span class="go">Watch film</span></span>
+      </button>
+    </div>
+    <div class="film-group" data-film-group="heritage">
+      <div class="group-head"><h3>Heritage cycle</h3></div>
+      <div class="film-grid">
+        <button class="film" data-yt="XniBuWDZs2k" data-title="From One Root"><span class="film-thumb"><img src="https://i.ytimg.com/vi/XniBuWDZs2k/hqdefault.jpg" alt=""><span class="film-dur">1:01</span></span><span class="film-meta"><span class="film-tag">Heritage</span><span class="film-name">From One Root</span></span></button>
+        <button class="film" data-yt="yprdvRcTaqU" data-title="The Last Falcon's Call"><span class="film-thumb"><img src="https://i.ytimg.com/vi/yprdvRcTaqU/hqdefault.jpg" alt=""><span class="film-dur">1:00</span></span><span class="film-meta"><span class="film-tag">Heritage</span><span class="film-name">The Last Falcon's Call</span></span></button>
+        <button class="film" data-yt="rIRi3XGAYZk" data-title="Ghous Al Khabir"><span class="film-thumb"><img src="https://i.ytimg.com/vi/rIRi3XGAYZk/hqdefault.jpg" alt=""><span class="film-dur">2:01</span></span><span class="film-meta"><span class="film-tag">Heritage</span><span class="film-name">Ghous Al Khabir</span></span></button>
+      </div>
+    </div>
+    <div class="film-group" data-film-group="folklore">
+      <div class="group-head"><h3>The Story of</h3></div>
+      <div class="film-grid">
+        <button class="film" data-yt="XjenEeUvu0Y" data-title="The Story of Baba Dharya"><span class="film-thumb"><img src="https://i.ytimg.com/vi/XjenEeUvu0Y/hqdefault.jpg" alt=""><span class="film-dur">1:50</span></span><span class="film-meta"><span class="film-tag">Folklore</span><span class="film-name">Baba Dharya</span></span></button>
+        <button class="film" data-yt="uSToKgtEJXU" data-title="The Story of Al Maha"><span class="film-thumb"><img src="https://i.ytimg.com/vi/uSToKgtEJXU/hqdefault.jpg" alt=""><span class="film-dur">1:52</span></span><span class="film-meta"><span class="film-tag">Folklore</span><span class="film-name">Al Maha</span></span></button>
+        <button class="film" data-yt="TvjOwUoVfyM" data-title="The Story of Um Al Duwais"><span class="film-thumb"><img src="https://i.ytimg.com/vi/TvjOwUoVfyM/hqdefault.jpg" alt=""><span class="film-dur">1:45</span></span><span class="film-meta"><span class="film-tag">Folklore</span><span class="film-name">Um Al Duwais</span></span></button>
+      </div>
+    </div>
+    <div class="film-group" data-film-group="place">
+      <div class="group-head"><h3>Place</h3></div>
+      <div class="film-grid">
+        <article class="film" style="cursor:default"><span class="film-thumb" style="display:flex;align-items:center;justify-content:center;color:#b9c6d6">Not on YouTube yet</span><span class="film-meta"><span class="film-tag">Place</span><span class="film-name">Qasr Al Hosn</span></span></article>
+      </div>
+    </div>
+    <div class="film-group" data-film-group="original">
+      <div class="group-head"><h3>Original 3D</h3></div>
+      <div class="film-grid">
+        <button class="film" data-yt="sFJ3uQRaQcA" data-title="Pop!"><span class="film-thumb"><img src="https://i.ytimg.com/vi/sFJ3uQRaQcA/hqdefault.jpg" alt=""><span class="film-dur">3:01</span></span><span class="film-meta"><span class="film-tag">3D short</span><span class="film-name">Pop!</span></span></button>
+      </div>
+    </div>
+    <div class="film-foot"><a class="btn" href="https://www.youtube.com/@dreamhubAI/videos" target="_blank" rel="noopener">View all on YouTube</a></div>
+  </div>
+  <div class="film-lb" id="film-lightbox"><button class="close">×</button><div class="inner"><div class="frame"></div><div class="bar"><span class="t"></span><a target="_blank" rel="noopener">Open on YouTube</a></div></div></div>
+</section>
+<script>
+(function(){var root=document.getElementById('research-outputs');if(!root)return;var btns=root.querySelectorAll('[data-film-filter]');var groups=root.querySelectorAll('[data-film-group]');btns.forEach(function(b){b.addEventListener('click',function(){var f=b.getAttribute('data-film-filter');btns.forEach(function(x){x.classList.toggle('active',x===b)});groups.forEach(function(g){g.classList.toggle('hidden',!(f==='all'||g.getAttribute('data-film-group')===f))})})});var lb=document.getElementById('film-lightbox');var frame=lb.querySelector('.frame'),title=lb.querySelector('.t'),link=lb.querySelector('.bar a');function open(id,t){var url='https://www.youtube.com/watch?v='+id;var ifr=document.createElement('iframe');ifr.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';ifr.allow='autoplay;encrypted-media;picture-in-picture;fullscreen';frame.innerHTML='';frame.appendChild(ifr);title.textContent=t;link.href=url;lb.classList.add('open')}function close(){lb.classList.remove('open');frame.innerHTML=''}root.querySelectorAll('[data-yt]').forEach(function(el){el.addEventListener('click',function(){open(el.getAttribute('data-yt'),el.getAttribute('data-title'))})});lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('close'))close()});document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();
+</script>
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-eyebrow">Selected Work</span><h2>Featured Projects</h2></div>
+    <div class="grid three">
+      <article class="card reveal"><div class="meta">2025 · Principal Investigator · HCT ARG</div><h3>Preserving UAE Cultural Heritage through Generative AI</h3><p>Flagship grant. The films above are the public outputs.</p></article>
+      <article class="card reveal"><div class="meta">2009 – 2020 · Digital Heritage</div><h3>A Famosa Fortress Reconstruction</h3><p>3D reconstruction of Malaysia's A Famosa Fortress from textual and visual evidence.</p></article>
+      <article class="card reveal"><div class="meta">2019 – 2022 · VR / 3D</div><h3>Sacred Architecture in VR</h3><p>Photorealistic VR reconstructions of sacred architecture.</p></article>
+      <article class="card reveal"><div class="meta">2024 – 2025 · Generative AI</div><h3>AI Animation Frameworks</h3><p>PRIDE photorealism framework and 2D-to-3D AI-augmented production.</p></article>
+      <article class="card reveal"><div class="meta">2023 – Present</div><h3>AI4LIFE</h3><p>Generative-AI training for academia, government and industry.</p></article>
+      <article class="card reveal"><div class="meta">2012 · EU-funded</div><h3>VR Heritage Village, Italy</h3><p>Top-three proposal for the EU Virtual Reality Heritage Village project.</p></article>
+    </div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-eyebrow">Funding</span><h2>Research Grants</h2></div>
+    <div class="grid two">
+      <article class="card reveal"><div class="meta">2025 · HCT · PI</div><h3>AED 304,800</h3><p>Preserving UAE Cultural Heritage through Generative AI and Immersive Technologies.</p></article>
+      <article class="card reveal"><div class="meta">2021 · HCT · Co-PI</div><h3>AED 199,950</h3><p>A Wide-Bandgap Ultraviolet LED Water Treatment System.</p></article>
+      <article class="card reveal"><div class="meta">2021 · HCT · PI</div><h3>AED 10,000</h3><p>VR DSLR Camera.</p></article>
+      <article class="card reveal"><div class="meta">2017 · Effat · PI</div><h3>SAR 20,000</h3><p>Holographic display for cultural heritage navigation.</p></article>
+      <article class="card reveal"><div class="meta">2007 · British Council</div><h3>GBP 17,000</h3><p>3D modelling for urban design and cultural heritage.</p></article>
+      <article class="card reveal"><div class="meta">2005 · MOSTI E-Science · Co-PI</div><h3>RM 177,000</h3><p>Heritage preservation in virtual environments.</p></article>
+      <article class="card reveal"><div class="meta">2004 · MOSTI IRPA · Co-PI</div><h3>RM 160,000</h3><p>Radiosity and HDRI rendering for local content.</p></article>
+      <article class="card reveal"><div class="meta">2004 · MMU · PI</div><h3>RM 127,000</h3><p>Distributed rendering of complex animation scenes.</p></article>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="assets/main.js"></script>
+</body>
+</html>
