@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test landing — Dr. Mohamad Izani</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .test-banner{
+    position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:80;
+    background:#12263d;color:#e9dcbf;font-size:.78rem;letter-spacing:.04em;
+    padding:6px 14px;border-radius:999px;border:1px solid rgba(194,154,74,.5);
+  }
+  .land{
+    min-height:100vh;display:grid;place-items:center;
+    background:#0e1a2b;color:#eef3f9;position:relative;overflow:hidden;
+    padding:88px 24px 48px;
+  }
+  .stage{position:absolute;inset:0;pointer-events:none}
+  .stage svg{width:100%;height:100%;display:block}
+  .veil{
+    position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(14,26,43,.82) 0%,rgba(14,26,43,.55) 46%,rgba(14,26,43,.25) 100%);
+  }
+  .copy{position:relative;z-index:2;max-width:720px;width:100%}
+  .copy h1{
+    font-family:'Source Serif 4',Georgia,serif;font-weight:600;
+    font-size:clamp(2.6rem,6vw,4.4rem);color:#fff;letter-spacing:-.03em;line-height:1.05;
+  }
+  .copy .line{margin:18px 0 28px;font-size:1.2rem;color:#d5deea;max-width:28ch}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .actions a{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:132px;padding:12px 20px;border-radius:999px;
+    font-weight:600;font-size:.95rem;border:1px solid transparent;
+  }
+  .actions a.primary{background:#c29a4a;color:#12263d}
+  .actions a.primary:hover{background:#e9dcbf;color:#12263d}
+  .actions a.quiet{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+  .actions a.quiet:hover{border-color:#c29a4a;color:#e9dcbf}
+  .strip{margin-top:28px;color:#b9c6d6;font-size:.92rem;letter-spacing:.02em}
+  .cvnote{margin-top:14px;font-size:.88rem}
+  .cvnote a{color:#e9dcbf;border-bottom:1px solid rgba(233,220,191,.45)}
+  .phase{
+    position:absolute;right:28px;bottom:28px;z-index:2;
+    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#e9dcbf;
+  }
+  .wall{fill:none;stroke:#e9dcbf;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:900;stroke-dashoffset:900;animation:draw 12s ease-in-out infinite}
+  .fillb{fill:#c29a4a;opacity:0;animation:fillin 12s ease-in-out infinite}
+  .scan{stroke:#7ec8ff;stroke-width:1.5;opacity:.0;animation:scan 12s linear infinite}
+  .point{fill:#7ec8ff;opacity:0;animation:dots 12s ease-in-out infinite}
+  @keyframes draw{
+    0%,8%{stroke-dashoffset:900;opacity:.2}
+    28%,62%{stroke-dashoffset:0;opacity:1}
+    78%,100%{stroke-dashoffset:0;opacity:.35}
+  }
+  @keyframes fillin{
+    0%,34%{opacity:0}
+    48%,70%{opacity:.55}
+    88%,100%{opacity:0}
+  }
+  @keyframes scan{
+    0%,6%{opacity:0;transform:translateY(40px)}
+    12%{opacity:.9}
+    24%{opacity:0;transform:translateY(-220px)}
+    100%{opacity:0}
+  }
+  @keyframes dots{
+    0%,10%{opacity:0}
+    16%,26%{opacity:1}
+    34%,100%{opacity:0}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wall{stroke-dashoffset:0;opacity:1;animation:none}
+    .fillb{opacity:.4;animation:none}
+    .scan,.point{display:none}
+  }
+  @media(max-width:720px){
+    .phase{right:16px;bottom:16px}
+    .veil{background:linear-gradient(180deg,rgba(14,26,43,.35),rgba(14,26,43,.82))}
+  }
+</style>
+</head>
+<body>
+<p class="test-banner">Test page. The live homepage is unchanged.</p>
+<section class="land">
+  <div class="stage" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+      <g transform="translate(620,150)">
+        <line class="scan" x1="-40" y1="80" x2="460" y2="80"/>
+        <circle class="point" cx="40" cy="250" r="3"/>
+        <circle class="point" cx="180" cy="180" r="3" style="animation-delay:.2s"/>
+        <circle class="point" cx="300" cy="210" r="3" style="animation-delay:.35s"/>
+        <circle class="point" cx="390" cy="140" r="3" style="animation-delay:.15s"/>
+        <path class="fillb" d="M20 340 L20 210 L70 210 L70 160 L110 160 L110 120 L150 90 L190 120 L190 160 L250 160 L250 200 L310 200 L310 150 L350 150 L350 110 L390 80 L430 110 L430 220 L470 220 L470 340 Z"/>
+        <path class="wall" d="M20 340 L20 210 L70 210 L70 160 L110 160 L110 120 L150 90 L190 120 L190 160 L250 160 L250 200 L310 200 L310 150 L350 150 L350 110 L390 80 L430 110 L430 220 L470 220 L470 340 Z"/>
+        <path class="wall" d="M150 90 L150 40 M390 80 L390 36" style="animation-delay:.4s"/>
+        <path class="wall" d="M40 250 H450 M70 210 V340 M190 160 V340 M310 200 V340 M430 150 V340" style="animation-delay:.6s"/>
+      </g>
+    </svg>
+  </div>
+  <div class="veil"></div>
+  <div class="copy">
+    <h1>Mohamad Izani</h1>
+    <p class="line">Digital heritage, immersive media, and generative AI.</p>
+    <div class="actions">
+      <a class="primary" href="publications.html">Research</a>
+      <a class="quiet" href="training.html">AI4LIFE</a>
+      <a class="quiet" href="contact.html">Collaborate</a>
+    </div>
+    <p class="strip">25+ years · 80+ publications · 5,000 people trained</p>
+    <p class="cvnote">Education, software, and journal roles are on the <a href="index.html">CV</a>.</p>
+  </div>
+  <p class="phase" id="phase">Scan</p>
+</section>
+<script>
+(function(){
+  var el=document.getElementById('phase');
+  if(!el||window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent='Reconstruction';return;}
+  var steps=[['Scan',0],['3D',3200],['Film',6200]];
+  function run(){
+    steps.forEach(function(s){setTimeout(function(){el.textContent=s[0];},s[1]);});
+  }
+  run();
+  setInterval(run,12000);
+})();
+</script>
+</body>
+</html>
