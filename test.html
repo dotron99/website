@@ -90,7 +90,7 @@
     <div class="orbit" id="orbit"></div>
     <div class="scene" id="scene" title="Drag to turn">
       <div class="head" id="head">
-        <div class="disc"><img src="assets/profile.jpg" alt="Dr. Mohamad Izani"></div>
+        <div class="disc"><img id="face" src="assets/profile.jpg" alt="Dr. Mohamad Izani"></div>
         <div class="disc back">Mohamad<br>Izani</div>
       </div>
     </div>
@@ -99,11 +99,15 @@
       <p>Digital heritage, immersive media, and generative AI.</p>
     </div>
   </div>
-  <p class="hint">Drag the portrait · the menu keeps moving</p>
+  <p class="hint">Drag the portrait · it turns a full circle</p>
 </section>
 <script>
 (function(){
   try{ sessionStorage.setItem('izaniTestLanding','1'); }catch(e){}
+  fetch('assets/portrait.b64').then(function(r){return r.text();}).then(function(t){
+    var img=document.getElementById('face');
+    if(img && t) img.src='data:image/jpeg;base64,'+t.replace(/\s/g,'');
+  }).catch(function(){});
   var items=[
     ['About','index.html'],
     ['Publications','publications.html'],
@@ -148,7 +152,7 @@
   scene.addEventListener('pointercancel', up);
   if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     (function tick(){
-      if(!drag){ y += 0.15; paint(); }
+      if(!drag){ y += 0.45; paint(); }
       requestAnimationFrame(tick);
     })();
   }
