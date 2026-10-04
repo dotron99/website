@@ -104,9 +104,10 @@
 <script>
 (function(){
   try{ sessionStorage.setItem('izaniTestLanding','1'); }catch(e){}
-  fetch('assets/portrait.b64').then(function(r){return r.text();}).then(function(t){
+  fetch('assets/portrait.b64').then(function(r){return r.ok ? r.text() : '';}).then(function(t){
+    t=(t||'').replace(/\s/g,'');
     var img=document.getElementById('face');
-    if(img && t) img.src='data:image/jpeg;base64,'+t.replace(/\s/g,'');
+    if(img && t.indexOf('/9j/')===0 && t.length>1000) img.src='data:image/jpeg;base64,'+t;
   }).catch(function(){});
   var items=[
     ['About','index.html'],
@@ -132,7 +133,7 @@
   });
   var head=document.getElementById('head');
   var scene=document.getElementById('scene');
-  var y=-18, x=8, drag=false, lx=0, ly=0;
+  var y=-18, x=6, drag=false, lx=0, ly=0;
   function paint(){ head.style.transform='rotateX('+x+'deg) rotateY('+y+'deg)'; }
   paint();
   scene.addEventListener('pointerdown', function(e){
@@ -141,8 +142,8 @@
   });
   scene.addEventListener('pointermove', function(e){
     if(!drag) return;
-    y += (e.clientX-lx)*0.5;
-    x += (ly-e.clientY)*0.3;
+    y += (e.clientX-lx)*0.6;
+    x += (ly-e.clientY)*0.35;
     x=Math.max(-40, Math.min(40, x));
     lx=e.clientX; ly=e.clientY;
     paint();
@@ -152,7 +153,7 @@
   scene.addEventListener('pointercancel', up);
   if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     (function tick(){
-      if(!drag){ y += 0.45; paint(); }
+      if(!drag){ y = (y + 0.55) % 360; paint(); }
       requestAnimationFrame(tick);
     })();
   }
