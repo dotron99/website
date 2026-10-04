@@ -38,7 +38,7 @@
         }).join('');
         return '<div class="nav-item has-drop">' +
                  '<button class="drop-toggle' + active + '" aria-haspopup="true" aria-expanded="false">' +
-                   item.label + '<span class="caret" aria-hidden="true">▾</span>' +
+                   item.label + '<span class="caret" aria-hidden="true">\u25be</span>' +
                  '</button>' +
                  '<div class="drop-menu">' + sub + '</div>' +
                '</div>';
@@ -50,7 +50,7 @@
       '<nav class="nav">' +
         '<div class="nav-inner">' +
           '<a class="brand" href="index.html"><span class="dot"></span>Dr. Mohamad Izani</a>' +
-          '<button class="nav-toggle" aria-label="Menu">☰</button>' +
+          '<button class="nav-toggle" aria-label="Menu">\u2630</button>' +
           '<div class="nav-links">' + links + '</div>' +
         '</div>' +
       '</nav>';
@@ -68,25 +68,22 @@
             '<a href="https://www.linkedin.com/in/izanizainal/" target="_blank" rel="noopener">LinkedIn</a>' +
             '<a href="mailto:mohamadizanizainal@gmail.com">Email</a>' +
           '</div>' +
-          '<div class="copy">© ' + y + ' Dr. Mohamad Izani · Abu Dhabi, UAE · www.izanizainal.com</div>' +
+          '<div class="copy">\u00a9 ' + y + ' Dr. Mohamad Izani \u00b7 Abu Dhabi, UAE \u00b7 www.izanizainal.com</div>' +
         '</div>' +
       '</footer>';
   }
 
-  // ---- inject chrome ----
   var navMount = document.getElementById('site-nav');
   if (navMount) navMount.outerHTML = buildNav();
   var footMount = document.getElementById('site-footer');
   if (footMount) footMount.outerHTML = buildFooter();
 
-  // ---- mobile nav toggle ----
   var toggle = document.querySelector('.nav-toggle');
   var links = document.querySelector('.nav-links');
   if (toggle && links) {
     toggle.addEventListener('click', function () { links.classList.toggle('open'); });
   }
 
-  // ---- dropdown (click = mobile; hover handled by CSS on desktop) ----
   document.querySelectorAll('.drop-toggle').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
@@ -96,7 +93,6 @@
     });
   });
 
-  // ---- scroll reveal (with fallback so content never stays hidden) ----
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -107,7 +103,6 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // ---- publication / gallery filter (generic) ----
   var filter = document.querySelector('.pub-filter');
   if (filter) {
     filter.addEventListener('click', function (e) {
@@ -124,7 +119,6 @@
     });
   }
 
-  // ---- gallery lightbox ----
   var lb = document.getElementById('lightbox');
   if (lb) {
     var lbImg = lb.querySelector('img');
@@ -142,5 +136,15 @@
     lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('close')) closeLb(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
   }
+
+  try {
+    if (sessionStorage.getItem('izaniTestLanding') === '1' && current !== 'test.html') {
+      var back = document.createElement('a');
+      back.href = 'test.html';
+      back.textContent = 'Back';
+      back.setAttribute('style', 'position:fixed;left:16px;bottom:16px;z-index:90;background:#12263d;color:#e9dcbf;padding:10px 16px;border-radius:999px;font-weight:600;font-size:.9rem;border:1px solid rgba(194,154,74,.65);');
+      document.body.appendChild(back);
+    }
+  } catch (err) {}
 
 })();
