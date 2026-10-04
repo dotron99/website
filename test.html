@@ -7,124 +7,155 @@
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="assets/style.css">
 <style>
-  .test-banner{
-    position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:80;
-    background:#12263d;color:#e9dcbf;font-size:.78rem;letter-spacing:.04em;
-    padding:6px 14px;border-radius:999px;border:1px solid rgba(194,154,74,.5);
-  }
+  html,body{height:100%;background:#0c1726}
+  body{margin:0;overflow:hidden}
   .land{
     min-height:100vh;display:grid;place-items:center;
-    background:#0e1a2b;color:#eef3f9;position:relative;overflow:hidden;
-    padding:88px 24px 48px;
+    background:
+      radial-gradient(900px 520px at 50% 46%, rgba(37,76,118,.45), transparent 70%),
+      #0c1726;
+    color:#eef3f9;position:relative;
   }
-  .stage{position:absolute;inset:0;pointer-events:none}
-  .stage svg{width:100%;height:100%;display:block}
-  .veil{
-    position:absolute;inset:0;
-    background:linear-gradient(90deg,rgba(14,26,43,.82) 0%,rgba(14,26,43,.55) 46%,rgba(14,26,43,.25) 100%);
+  .back{
+    position:fixed;left:18px;top:18px;z-index:5;
+    color:#e9dcbf;border:1px solid rgba(194,154,74,.55);
+    background:rgba(18,38,61,.72);backdrop-filter:blur(8px);
+    padding:8px 14px;border-radius:999px;font-size:.88rem;font-weight:600;
   }
-  .copy{position:relative;z-index:2;max-width:720px;width:100%}
-  .copy h1{
-    font-family:'Source Serif 4',Georgia,serif;font-weight:600;
-    font-size:clamp(2.6rem,6vw,4.4rem);color:#fff;letter-spacing:-.03em;line-height:1.05;
+  .back:hover{color:#fff;border-color:#e9dcbf}
+  .stage{position:relative;width:min(92vw,680px);height:min(92vw,680px)}
+  .scene{
+    position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
+    width:230px;height:230px;perspective:900px;cursor:grab;z-index:2;
+    touch-action:none;
   }
-  .copy .line{margin:18px 0 28px;font-size:1.2rem;color:#d5deea;max-width:28ch}
-  .actions{display:flex;flex-wrap:wrap;gap:12px}
-  .actions a{
-    display:inline-flex;align-items:center;justify-content:center;
-    min-width:132px;padding:12px 20px;border-radius:999px;
-    font-weight:600;font-size:.95rem;border:1px solid transparent;
+  .scene:active{cursor:grabbing}
+  .head{
+    width:100%;height:100%;position:relative;transform-style:preserve-3d;
+    border-radius:50%;
   }
-  .actions a.primary{background:#c29a4a;color:#12263d}
-  .actions a.primary:hover{background:#e9dcbf;color:#12263d}
-  .actions a.quiet{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
-  .actions a.quiet:hover{border-color:#c29a4a;color:#e9dcbf}
-  .strip{margin-top:28px;color:#b9c6d6;font-size:.92rem;letter-spacing:.02em}
-  .cvnote{margin-top:14px;font-size:.88rem}
-  .cvnote a{color:#e9dcbf;border-bottom:1px solid rgba(233,220,191,.45)}
-  .phase{
-    position:absolute;right:28px;bottom:28px;z-index:2;
-    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#e9dcbf;
+  .head img{
+    width:100%;height:100%;object-fit:cover;border-radius:50%;
+    border:3px solid rgba(233,220,191,.85);
+    box-shadow:0 18px 50px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.15);
+    backface-visibility:hidden;
   }
-  .wall{fill:none;stroke:#e9dcbf;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
-    stroke-dasharray:900;stroke-dashoffset:900;animation:draw 12s ease-in-out infinite}
-  .fillb{fill:#c29a4a;opacity:0;animation:fillin 12s ease-in-out infinite}
-  .scan{stroke:#7ec8ff;stroke-width:1.5;opacity:.0;animation:scan 12s linear infinite}
-  .point{fill:#7ec8ff;opacity:0;animation:dots 12s ease-in-out infinite}
-  @keyframes draw{
-    0%,8%{stroke-dashoffset:900;opacity:.2}
-    28%,62%{stroke-dashoffset:0;opacity:1}
-    78%,100%{stroke-dashoffset:0;opacity:.35}
+  .rim{
+    position:absolute;inset:-8px;border-radius:50%;
+    border:1px solid rgba(194,154,74,.35);pointer-events:none;
   }
-  @keyframes fillin{
-    0%,34%{opacity:0}
-    48%,70%{opacity:.55}
-    88%,100%{opacity:0}
+  .name{
+    position:absolute;left:0;right:0;bottom:7%;text-align:center;z-index:3;pointer-events:none;
   }
-  @keyframes scan{
-    0%,6%{opacity:0;transform:translateY(40px)}
-    12%{opacity:.9}
-    24%{opacity:0;transform:translateY(-220px)}
-    100%{opacity:0}
+  .name h1{
+    font-family:'Source Serif 4',Georgia,serif;color:#fff;font-weight:600;
+    font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.02em;
   }
-  @keyframes dots{
-    0%,10%{opacity:0}
-    16%,26%{opacity:1}
-    34%,100%{opacity:0}
+  .name p{color:#c5d2e2;font-size:.95rem;margin-top:4px}
+  .hint{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:#8ea0b5;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+  .orbit{
+    position:absolute;inset:0;animation:spin 72s linear infinite;
   }
-  @media (prefers-reduced-motion: reduce){
-    .wall{stroke-dashoffset:0;opacity:1;animation:none}
-    .fillb{opacity:.4;animation:none}
-    .scan,.point{display:none}
+  .stage:hover .orbit{animation-play-state:paused}
+  .stage:hover .orb a{animation-play-state:paused}
+  .slot{
+    position:absolute;left:50%;top:50%;
+    transform:rotate(var(--a)) translateX(min(38vw,250px));
   }
-  @media(max-width:720px){
-    .phase{right:16px;bottom:16px}
-    .veil{background:linear-gradient(180deg,rgba(14,26,43,.35),rgba(14,26,43,.82))}
+  .orb a{
+    display:inline-block;transform:translate(-50%,-50%);
+    animation:upright 72s linear infinite;
+    color:#f4efe4;font-weight:600;font-size:.95rem;letter-spacing:.02em;
+    padding:6px 10px;border-radius:999px;
+    text-shadow:0 2px 10px rgba(0,0,0,.65);
+    white-space:nowrap;
+  }
+  .orb a:hover{color:#12263d;background:#c29a4a}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes upright{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+  @media(prefers-reduced-motion:reduce){
+    .orbit{animation:none}
+    .orb a{animation:none}
+  }
+  @media(max-width:640px){
+    .name{bottom:12%}
+    .hint{display:none}
   }
 </style>
 </head>
 <body>
-<p class="test-banner">Test page. The live homepage is unchanged.</p>
+<a class="back" href="index.html">Main page</a>
 <section class="land">
-  <div class="stage" aria-hidden="true">
-    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-      <g transform="translate(620,150)">
-        <line class="scan" x1="-40" y1="80" x2="460" y2="80"/>
-        <circle class="point" cx="40" cy="250" r="3"/>
-        <circle class="point" cx="180" cy="180" r="3" style="animation-delay:.2s"/>
-        <circle class="point" cx="300" cy="210" r="3" style="animation-delay:.35s"/>
-        <circle class="point" cx="390" cy="140" r="3" style="animation-delay:.15s"/>
-        <path class="fillb" d="M20 340 L20 210 L70 210 L70 160 L110 160 L110 120 L150 90 L190 120 L190 160 L250 160 L250 200 L310 200 L310 150 L350 150 L350 110 L390 80 L430 110 L430 220 L470 220 L470 340 Z"/>
-        <path class="wall" d="M20 340 L20 210 L70 210 L70 160 L110 160 L110 120 L150 90 L190 120 L190 160 L250 160 L250 200 L310 200 L310 150 L350 150 L350 110 L390 80 L430 110 L430 220 L470 220 L470 340 Z"/>
-        <path class="wall" d="M150 90 L150 40 M390 80 L390 36" style="animation-delay:.4s"/>
-        <path class="wall" d="M40 250 H450 M70 210 V340 M190 160 V340 M310 200 V340 M430 150 V340" style="animation-delay:.6s"/>
-      </g>
-    </svg>
-  </div>
-  <div class="veil"></div>
-  <div class="copy">
-    <h1>Mohamad Izani</h1>
-    <p class="line">Digital heritage, immersive media, and generative AI.</p>
-    <div class="actions">
-      <a class="primary" href="publications.html">Research</a>
-      <a class="quiet" href="training.html">AI4LIFE</a>
-      <a class="quiet" href="contact.html">Collaborate</a>
+  <div class="stage">
+    <div class="orbit" id="orbit"></div>
+    <div class="scene" id="scene" title="Drag to turn">
+      <div class="head" id="head">
+        <img src="assets/profile.jpg" alt="Dr. Mohamad Izani">
+        <div class="rim"></div>
+      </div>
     </div>
-    <p class="strip">25+ years · 80+ publications · 5,000 people trained</p>
-    <p class="cvnote">Education, software, and journal roles are on the <a href="index.html">CV</a>.</p>
+    <div class="name">
+      <h1>Mohamad Izani</h1>
+      <p>Digital heritage, immersive media, and generative AI.</p>
+    </div>
   </div>
-  <p class="phase" id="phase">Scan</p>
+  <p class="hint">Drag the portrait · the menu keeps moving</p>
 </section>
 <script>
 (function(){
-  var el=document.getElementById('phase');
-  if(!el||window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent='Reconstruction';return;}
-  var steps=[['Scan',0],['3D',3200],['Film',6200]];
-  function run(){
-    steps.forEach(function(s){setTimeout(function(){el.textContent=s[0];},s[1]);});
+  try{ sessionStorage.setItem('izaniTestLanding','1'); }catch(e){}
+  var items=[
+    ['About','index.html'],
+    ['Publications','publications.html'],
+    ['My Work','portfolio-persona.html'],
+    ['Students','portfolio-students.html'],
+    ['Projects','projects.html'],
+    ['Training','training.html'],
+    ['Awards','awards.html'],
+    ['Blog','blog.html'],
+    ['Contact','contact.html']
+  ];
+  var orbit=document.getElementById('orbit');
+  items.forEach(function(it,i){
+    var slot=document.createElement('div');
+    slot.className='slot';
+    slot.style.setProperty('--a', (i*360/items.length)+'deg');
+    var a=document.createElement('a');
+    a.href=it[1];
+    a.textContent=it[0];
+    slot.appendChild(a);
+    var wrap=document.createElement('div');
+    wrap.className='orb';
+    wrap.appendChild(slot);
+    orbit.appendChild(wrap);
+  });
+  var head=document.getElementById('head');
+  var scene=document.getElementById('scene');
+  var y=-18, x=8, drag=false, lx=0, ly=0, id=null;
+  function paint(){ head.style.transform='rotateX('+x+'deg) rotateY('+y+'deg)'; }
+  paint();
+  scene.addEventListener('pointerdown', function(e){
+    drag=true; lx=e.clientX; ly=e.clientY;
+    scene.setPointerCapture(e.pointerId);
+  });
+  scene.addEventListener('pointermove', function(e){
+    if(!drag) return;
+    y += (e.clientX-lx)*0.45;
+    x += (ly-e.clientY)*0.28;
+    x=Math.max(-35, Math.min(35, x));
+    lx=e.clientX; ly=e.clientY;
+    paint();
+  });
+  function up(){ drag=false; }
+  scene.addEventListener('pointerup', up);
+  scene.addEventListener('pointercancel', up);
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce){
+    (function tick(){
+      if(!drag){ y += 0.12; paint(); }
+      id=requestAnimationFrame(tick);
+    })();
   }
-  run();
-  setInterval(run,12000);
 })();
 </script>
 </body>
